@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SnapSoftCalculatorAPI.Models;
+using System.Collections.Generic;
 
 namespace SnapSoftCalculatorAPI.Interfaces
 {
@@ -12,5 +13,7 @@ namespace SnapSoftCalculatorAPI.Interfaces
     /// <param name="inputNumbers"></param>
     /// <returns></returns>
     List<int> CalculateMagicProduct(List<int> inputNumbers);
+
+    List<Calculation> GetAll();
   }
 }
