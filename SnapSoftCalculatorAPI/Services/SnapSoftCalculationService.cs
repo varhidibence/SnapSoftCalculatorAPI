@@ -1,7 +1,7 @@
 ﻿using SnapSoftCalculatorAPI.Interfaces;
 using SnapSoftCalculatorAPI.Models;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace SnapSoftCalculatorAPI.Services
 {
@@ -39,6 +39,11 @@ namespace SnapSoftCalculatorAPI.Services
     /// <returns>product of the input array except the element i.</returns>
     public List<int> CalculateMagicProduct(List<int> inputNumbers)
     {
+      if (inputNumbers is null)
+      {
+        return null;
+      }
+
       List<int> result = new List<int>();
 
       for (int i = 0; i < inputNumbers.Count; i++)
