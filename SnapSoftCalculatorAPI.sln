@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnapSoftCalculatorAPI", "SnapSoftCalculatorAPI\SnapSoftCalculatorAPI.csproj", "{1F5582CB-40BD-4A2E-B5C4-CC4AB9CBB899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnapSoftCalculatorAPI", "SnapSoftCalculatorAPI\SnapSoftCalculatorAPI.csproj", "{1F5582CB-40BD-4A2E-B5C4-CC4AB9CBB899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnapSoftCalculatorAPI.Tets", "SnapSoftCalculatorAPI.Tets\SnapSoftCalculatorAPI.Tets.csproj", "{6E713BB8-DFAD-46EA-96D7-082AA413C79A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1F5582CB-40BD-4A2E-B5C4-CC4AB9CBB899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F5582CB-40BD-4A2E-B5C4-CC4AB9CBB899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F5582CB-40BD-4A2E-B5C4-CC4AB9CBB899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E713BB8-DFAD-46EA-96D7-082AA413C79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E713BB8-DFAD-46EA-96D7-082AA413C79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E713BB8-DFAD-46EA-96D7-082AA413C79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E713BB8-DFAD-46EA-96D7-082AA413C79A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
