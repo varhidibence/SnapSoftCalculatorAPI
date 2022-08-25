@@ -19,6 +19,10 @@ namespace SnapSoftCalculatorAPI.Tests
 
       // Assert
       Assert.Equal(inputNumbers.Count, output.Count);
+      Assert.Equal(24, output[0]);
+      Assert.Equal(12, output[1]);
+      Assert.Equal(8, output[2]);
+      Assert.Equal(6, output[3]);
 
     }
   }

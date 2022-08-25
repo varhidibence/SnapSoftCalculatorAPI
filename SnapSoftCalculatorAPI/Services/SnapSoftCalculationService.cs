@@ -30,10 +30,29 @@ namespace SnapSoftCalculatorAPI.Services
       };
     }
 
+    /// <summary>
+    /// output is also an n-long integer array,
+    /// where the element with index i is equal to the product 
+    /// of the input array except the element i.
+    /// </summary>
+    /// <param name="inputNumbers">n-long integer array</param>
+    /// <returns>product of the input array except the element i.</returns>
     public List<int> CalculateMagicProduct(List<int> inputNumbers)
     {
-      List<int> result = new List<int>() { 24, 21, 8, 6};
-      // TODO: implement magic
+      List<int> result = new List<int>();
+
+      for (int i = 0; i < inputNumbers.Count; i++)
+      {
+        int product = 1;
+        for (int j = 0; j < inputNumbers.Count; j++)
+        {
+          if (i != j)
+          {
+            product *= inputNumbers[j];
+          }
+        }
+        result.Add(product);
+      }
 
       return result;
     }
