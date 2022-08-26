@@ -7,25 +7,46 @@ namespace SnapSoftCalculatorAPI.Services
 {
   public class SnapSoftCalculationService : ISnapSoftCalculation
   {
-    private readonly List<Calculation> calculationsMock;
+    private readonly List<ICalculation> calculationsMock;
+
+    private static int nextId = 1;
 
     public SnapSoftCalculationService()
     {
-      calculationsMock = new List<Calculation>
+      calculationsMock = new List<ICalculation>
       {
         new Calculation
         {
-          Input = new List<int> {1, 2, 3, 4},
-          Output = new List<int> {24, 12, 8, 6},
-          Comment = "This is a comment.",
-          TimestampOfCall = new DateTime(2022, 08, 22),
+          CalculationID = Guid.NewGuid(),
+          CalculationRequest = new CalculationRequest
+          {
+            
+            Comment = "This is a comment.",
+            Request =  new List<int> {1, 2, 3, 4}
+          },
+          CalculationResponse = new CalculationResponse
+          {
+            ID= nextId++,
+            RequestID = nextId++,
+            Result = new List<int> {24, 12, 8, 6},
+             TimestampOfCall = new DateTime(2022, 08, 22),
+          }
         },
         new Calculation
         {
-          Input = new List<int> {1, 2, 3, 4},
-          Output = new List<int> {5, 6, 7, 8},
-          Comment = "This is a comment.",
-          TimestampOfCall = new DateTime(2022, 08, 23),
+          CalculationID = Guid.NewGuid(),
+          CalculationRequest = new CalculationRequest
+          {
+            Comment = "This is a comment.",
+            Request =  new List<int> {1, 2}
+          },
+          CalculationResponse = new CalculationResponse
+          {
+            ID= nextId++,
+            RequestID = nextId ++, 
+            Result = new List<int> {2, 1},
+            TimestampOfCall = new DateTime(2022, 08, 22),
+          }
         },
       };
     }
@@ -62,7 +83,31 @@ namespace SnapSoftCalculatorAPI.Services
       return result;
     }
 
-    public List<Calculation> GetAll()
+    public ICalculationResponse Add(ICalculationRequest calculationRequest)
+    {
+      var result = CalculateMagicProduct(calculationRequest.Request);
+
+      CalculationResponse response = new CalculationResponse
+      {
+        ID = nextId++,
+        RequestID = nextId++,
+        Result = result,
+        TimestampOfCall = DateTime.Now
+      };
+
+      var calculation = new Calculation()
+      {
+        CalculationID = Guid.NewGuid(),
+        CalculationRequest = calculationRequest,
+        CalculationResponse = response
+      };
+
+      calculationsMock?.Add(calculation);
+
+      return response;
+    }
+
+    List<ICalculation> ISnapSoftCalculation.GetAll()
     {
       return calculationsMock;
     }

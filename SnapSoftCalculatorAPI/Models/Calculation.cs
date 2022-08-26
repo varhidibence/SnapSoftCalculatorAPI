@@ -1,29 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SnapSoftCalculatorAPI.Interfaces;
+using System;
 
 namespace SnapSoftCalculatorAPI.Models
 {
-  public class Calculation
+  public class Calculation : ICalculation
   {
+    public Guid CalculationID { get; set; }
 
-    /// <summary>
-    /// List of integers for the calculation
-    /// </summary>
-    public List<int> Input { get; set; }
+    public ICalculationRequest CalculationRequest { get; set; }
 
-    /// <summary>
-    /// Result of the calculation
-    /// </summary>
-    public List<int> Output { get; set; }
-
-    /// <summary>
-    /// Comment for the calculation
-    /// </summary>
-    public string Comment { get; set; }
-
-    /// <summary>
-    /// Timestamp of the call
-    /// </summary>
-    public DateTime TimestampOfCall { get; set; }
+    public ICalculationResponse CalculationResponse { get; set; }
   }
 }

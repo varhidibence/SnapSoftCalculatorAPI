@@ -13,7 +13,7 @@ namespace SnapSoftCalculatorAPI.Controllers
   {
     // GET: api/<CalculateController>
     [HttpGet]
-    public ActionResult<List<Calculation>> Get([FromServices] ISnapSoftCalculation snapSoftCalculationService)
+    public ActionResult<List<ICalculation>> Get([FromServices] ISnapSoftCalculation snapSoftCalculationService)
     {
       return snapSoftCalculationService.GetAll();
     }
@@ -27,8 +27,11 @@ namespace SnapSoftCalculatorAPI.Controllers
 
     // POST api/<CalculateController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    [Route("api/[controller]/a")]
+    public IActionResult Post([FromBody] CalculationRequest request, [FromServices] ISnapSoftCalculation snapSoftCalculationService)
     {
+      var response = snapSoftCalculationService.Add(request);
+      return CreatedAtAction(nameof(Post), new {request, response});
     }
 
     // PUT api/<CalculateController>/5

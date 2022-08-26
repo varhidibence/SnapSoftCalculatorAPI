@@ -14,6 +14,10 @@ namespace SnapSoftCalculatorAPI.Interfaces
     /// <returns></returns>
     List<int> CalculateMagicProduct(List<int> inputNumbers);
 
-    List<Calculation> GetAll();
+    List<ICalculation> GetAll();
+
+    ICalculationResponse Add(ICalculationRequest request);
+
+
   }
 }
