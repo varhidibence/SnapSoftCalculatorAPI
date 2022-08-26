@@ -20,7 +20,7 @@
     "SnapSoftCalculatorAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "calculate",
+      "launchUrl": "swagger",
       "applicationUrl": "https://localhost:3000;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -28,6 +28,7 @@ namespace SnapSoftCalculatorAPI
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllers();
+      services.AddSwaggerGen();
 
       services.AddSingleton<ISnapSoftCalculation, SnapSoftCalculationService>();
     }
@@ -38,6 +39,9 @@ namespace SnapSoftCalculatorAPI
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
+
+        app.UseSwagger();
+        app.UseSwaggerUI();
       }
 
       app.UseHttpsRedirection();
