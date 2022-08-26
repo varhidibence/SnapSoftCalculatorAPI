@@ -7,43 +7,43 @@ using System.Collections.Generic;
 
 namespace SnapSoftCalculatorAPI.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("api")]
   [ApiController]
   public class CalculateController : ControllerBase
   {
     // GET: api/<CalculateController>
     [HttpGet]
+    [Route("/history")]
     public ActionResult<List<ICalculation>> Get([FromServices] ISnapSoftCalculation snapSoftCalculationService)
     {
       return snapSoftCalculationService.GetAll();
     }
 
-    // GET api/<CalculateController>/5
-    [HttpGet("{id}")]
-    public string Get(int id)
-    {
-      return "value";
-    }
-
-    // POST api/<CalculateController>
+    // POST api/<CalculateController>/a
     [HttpPost]
-    [Route("api/[controller]/a")]
-    public IActionResult Post([FromBody] CalculationRequest request, [FromServices] ISnapSoftCalculation snapSoftCalculationService)
+    [Route("/[controller]/a")]
+    public IActionResult Post_a([FromBody] CalculationRequest request, [FromServices] ISnapSoftCalculation snapSoftCalculationService)
     {
-      var response = snapSoftCalculationService.Add(request);
-      return CreatedAtAction(nameof(Post), new {request, response});
+      var response = snapSoftCalculationService.CalculateAnyWay(request);
+      return CreatedAtAction(nameof(Post_a), new {request, response});
     }
 
-    // PUT api/<CalculateController>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    // POST api/<CalculateController>/b
+    [HttpPost]
+    [Route("/[controller]/b")]
+    public IActionResult Post_b([FromBody] CalculationRequest request, [FromServices] ISnapSoftCalculation snapSoftCalculationService)
     {
+      var response = snapSoftCalculationService.CalculateAnyWay(request);
+      return CreatedAtAction(nameof(Post_b), new { request, response });
     }
 
-    // DELETE api/<CalculateController>/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
+    // POST api/<CalculateController>/c
+    [HttpPost]
+    [Route("/[controller]/c")]
+    public IActionResult Post_c([FromBody] CalculationRequest request, [FromServices] ISnapSoftCalculation snapSoftCalculationService)
     {
+      var response = snapSoftCalculationService.CalculateAnyWay(request);
+      return CreatedAtAction(nameof(Post_c), new { request, response });
     }
   }
 }

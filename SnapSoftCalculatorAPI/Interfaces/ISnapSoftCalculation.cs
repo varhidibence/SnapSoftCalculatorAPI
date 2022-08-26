@@ -16,7 +16,11 @@ namespace SnapSoftCalculatorAPI.Interfaces
 
     List<ICalculation> GetAll();
 
-    ICalculationResponse Add(ICalculationRequest request);
+    ICalculationResponse CalculateAnyWay(ICalculationRequest request);
+
+    ICalculationResponse CalculateWithoutDivison(ICalculationRequest request);
+
+    ICalculationResponse CalculateBetterComplexity(ICalculationRequest request);
 
 
   }

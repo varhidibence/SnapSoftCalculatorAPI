@@ -7,9 +7,9 @@ namespace SnapSoftCalculatorAPI.Models
   public class CalculationResponse: ICalculationResponse
   {
 
-    public int ID { get; set; }
+    public Guid ID { get; set; }
 
-    public int  RequestID { get; set; }
+    public Guid  RequestID { get; set; }
 
     /// <summary>
     /// Result of the calculation

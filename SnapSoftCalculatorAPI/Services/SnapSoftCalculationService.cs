@@ -89,8 +89,8 @@ namespace SnapSoftCalculatorAPI.Services
 
       CalculationResponse response = new CalculationResponse
       {
-        ID = nextId++,
-        RequestID = nextId++,
+        ID = Guid.NewGuid(),
+        RequestID = Guid.NewGuid(),
         Result = result,
         TimestampOfCall = DateTime.Now
       };
@@ -110,6 +110,21 @@ namespace SnapSoftCalculatorAPI.Services
     List<ICalculation> ISnapSoftCalculation.GetAll()
     {
       return calculationsMock;
+    }
+
+    public ICalculationResponse CalculateAnyWay(ICalculationRequest request)
+    {
+      return Add(request);
+    }
+
+    public ICalculationResponse CalculateWithoutDivison(ICalculationRequest request)
+    {
+      return Add(request);
+    }
+
+    public ICalculationResponse CalculateBetterComplexity(ICalculationRequest request)
+    {
+      throw new NotImplementedException();
     }
   }
 }
