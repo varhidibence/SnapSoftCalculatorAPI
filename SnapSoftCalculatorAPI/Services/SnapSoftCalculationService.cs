@@ -7,48 +7,11 @@ namespace SnapSoftCalculatorAPI.Services
 {
   public class SnapSoftCalculationService : ISnapSoftCalculation
   {
-    private readonly List<ICalculation> calculationsMock;
-
-    private static int nextId = 1;
+    public List<ICalculation> calculations { get; private set; }
 
     public SnapSoftCalculationService()
     {
-      calculationsMock = new List<ICalculation>
-      {
-        new Calculation
-        {
-          CalculationID = Guid.NewGuid(),
-          CalculationRequest = new CalculationRequest
-          {
-            
-            Comment = "This is a comment.",
-            Request =  new List<int> {1, 2, 3, 4}
-          },
-          CalculationResponse = new CalculationResponse
-          {
-            ID= nextId++,
-            RequestID = nextId++,
-            Result = new List<int> {24, 12, 8, 6},
-             TimestampOfCall = new DateTime(2022, 08, 22),
-          }
-        },
-        new Calculation
-        {
-          CalculationID = Guid.NewGuid(),
-          CalculationRequest = new CalculationRequest
-          {
-            Comment = "This is a comment.",
-            Request =  new List<int> {1, 2}
-          },
-          CalculationResponse = new CalculationResponse
-          {
-            ID= nextId++,
-            RequestID = nextId ++, 
-            Result = new List<int> {2, 1},
-            TimestampOfCall = new DateTime(2022, 08, 22),
-          }
-        },
-      };
+      calculations = new List<ICalculation>();
     }
 
     /// <summary>
@@ -58,7 +21,7 @@ namespace SnapSoftCalculatorAPI.Services
     /// </summary>
     /// <param name="inputNumbers">n-long integer array</param>
     /// <returns>product of the input array except the element i.</returns>
-    public List<int> CalculateMagicProduct(List<int> inputNumbers)
+    public List<int> CalculateMagicProductAnyWay(List<int> inputNumbers)
     {
       if (inputNumbers is null)
       {
@@ -83,18 +46,16 @@ namespace SnapSoftCalculatorAPI.Services
       return result;
     }
 
-    public ICalculationResponse Add(ICalculationRequest calculationRequest)
+    public ICalculationResponse CreateResponse(ICalculationRequest calculationRequest, List<int> result)
     {
-      var result = CalculateMagicProduct(calculationRequest.Request);
+      CalculationResponse response = CreateResponseFromResult(result);
+      SaveCalculationFromResponse(calculationRequest, response);
 
-      CalculationResponse response = new CalculationResponse
-      {
-        ID = Guid.NewGuid(),
-        RequestID = Guid.NewGuid(),
-        Result = result,
-        TimestampOfCall = DateTime.Now
-      };
+      return response;
+    }
 
+    private void SaveCalculationFromResponse(ICalculationRequest calculationRequest, CalculationResponse response)
+    {
       var calculation = new Calculation()
       {
         CalculationID = Guid.NewGuid(),
@@ -102,24 +63,35 @@ namespace SnapSoftCalculatorAPI.Services
         CalculationResponse = response
       };
 
-      calculationsMock?.Add(calculation);
+      calculations?.Add(calculation);
+    }
 
-      return response;
+    private CalculationResponse CreateResponseFromResult(List<int> result)
+    {
+      return new CalculationResponse
+      {
+        ID = Guid.NewGuid(),
+        RequestID = Guid.NewGuid(),
+        Result = result,
+        TimestampOfCall = DateTime.Now
+      };
     }
 
     List<ICalculation> ISnapSoftCalculation.GetAll()
     {
-      return calculationsMock;
+      return calculations;
     }
 
     public ICalculationResponse CalculateAnyWay(ICalculationRequest request)
     {
-      return Add(request);
+      var result = CalculateMagicProductAnyWay(request.Request);
+      return CreateResponse(request, result);
     }
 
     public ICalculationResponse CalculateWithoutDivison(ICalculationRequest request)
     {
-      return Add(request);
+      var result = CalculateMagicProductAnyWay(request.Request);
+      return CreateResponse(request, result);
     }
 
     public ICalculationResponse CalculateBetterComplexity(ICalculationRequest request)

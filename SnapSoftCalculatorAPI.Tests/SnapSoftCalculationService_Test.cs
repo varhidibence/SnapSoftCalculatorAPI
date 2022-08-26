@@ -14,7 +14,7 @@ namespace SnapSoftCalculatorAPI.Tests
       List<int> inputNumbers = new List<int> { 1, 2, 3, 4 };
 
       // Act
-      List<int> output = service.CalculateMagicProduct(inputNumbers);
+      List<int> output = service.CalculateMagicProductAnyWay(inputNumbers);
 
       // Assert
       Assert.Equal(inputNumbers.Count, output.Count);
@@ -32,7 +32,7 @@ namespace SnapSoftCalculatorAPI.Tests
       List<int> inputNumbers = new List<int> {1, 2};
 
       // Act
-      List<int> output = service.CalculateMagicProduct(inputNumbers);
+      List<int> output = service.CalculateMagicProductAnyWay(inputNumbers);
 
       // Assert
       Assert.Equal(inputNumbers.Count, output.Count);
@@ -48,7 +48,7 @@ namespace SnapSoftCalculatorAPI.Tests
       List<int> inputNumbers = null;
 
       // Act
-      List<int> output = service.CalculateMagicProduct(inputNumbers);
+      List<int> output = service.CalculateMagicProductAnyWay(inputNumbers);
 
       // Assert
       Assert.Null(output);  
