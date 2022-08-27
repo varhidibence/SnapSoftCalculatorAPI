@@ -15,8 +15,8 @@ namespace SnapSoftCalculatorAPI.DAL
 
     public string Comment { get; set; }
 
-    public virtual ICollection<StoredNumber> RequestedNumbers { get; set; }
+    public virtual List<StoredNumber> RequestedNumbers { get; set; }
 
-    public virtual ICollection<StoredNumber> ResponseNumbers { get; set; }
+    public virtual List<StoredNumber> ResponseNumbers { get; set; }
   }
 }

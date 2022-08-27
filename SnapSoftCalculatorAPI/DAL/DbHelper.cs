@@ -1,4 +1,7 @@
 ﻿using SnapSoftCalculatorAPI.Interfaces;
+using SnapSoftCalculatorAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SnapSoftCalculatorAPI.DAL
 {
@@ -13,7 +16,20 @@ namespace SnapSoftCalculatorAPI.DAL
 
     //public List<ICalculation> GetAllCalculations()
     //{
-    //  var dataList = _context
+    //  var calculations = new List<ICalculation>();
+    //  var stored = _context.StoredCalculations.ToList();
+
+    //  stored.ForEach(storedCal => calculations.Add(new Calculation()
+    //  {
+    //    CalculationID = storedCal.ID,
+    //    CalculationRequest = new CalculationRequest
+    //    {
+    //      Comment = storedCal.Comment,
+    //      Request = storedCal.RequestedNumbers.ToList<int>(num => num),
+
+    //    }
+        
+    //  }))
     //}
   }
 }
