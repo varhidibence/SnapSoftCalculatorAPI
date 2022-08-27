@@ -4,6 +4,7 @@
 - Aug 23, 2022: 2 hrs
 - Aug 25, 2022: 1 hr
 - Aug 26, 2022: 1.5 hr
+- Aug 27, 2022: 2.5 hr
 
 ## Concepts
 ### Relational database
