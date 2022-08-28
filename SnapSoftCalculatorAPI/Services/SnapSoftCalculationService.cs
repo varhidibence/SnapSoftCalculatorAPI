@@ -82,6 +82,16 @@ namespace SnapSoftCalculatorAPI.Services
       return calculations;
     }
 
+    public List<ICalculation> SearchByComment(string commentFilter)
+    {
+      if (string.IsNullOrWhiteSpace(commentFilter))
+      {
+        return calculations;
+      }
+
+      return calculations.FindAll(calculation => calculation.CalculationRequest.Comment.Contains(commentFilter));
+    }
+
     public ICalculationResponse CalculateAnyWay(ICalculationRequest request)
     {
       var result = CalculateMagicProductAnyWay(request.Request);
@@ -98,5 +108,6 @@ namespace SnapSoftCalculatorAPI.Services
     {
       throw new NotImplementedException();
     }
+
   }
 }

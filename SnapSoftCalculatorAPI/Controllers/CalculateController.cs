@@ -12,12 +12,20 @@ namespace SnapSoftCalculatorAPI.Controllers
   public class CalculateController : ControllerBase
   {
     // GET: api/<CalculateController>
+    //[HttpGet]
+    //[Route("/history")]
+    //public ActionResult<List<ICalculation>> Get([FromServices] ISnapSoftCalculation snapSoftCalculationService)
+    //{
+    //  return snapSoftCalculationService.GetAll();
+    //}
+
     [HttpGet]
     [Route("/history")]
-    public ActionResult<List<ICalculation>> Get([FromServices] ISnapSoftCalculation snapSoftCalculationService)
+    public ActionResult<List<ICalculation>> Get([FromServices] ISnapSoftCalculation snapSoftCalculationService,[FromQuery] string comment)
     {
-      return snapSoftCalculationService.GetAll();
+      return snapSoftCalculationService.SearchByComment(comment);
     }
+
 
     // POST api/<CalculateController>/a
     [HttpPost]

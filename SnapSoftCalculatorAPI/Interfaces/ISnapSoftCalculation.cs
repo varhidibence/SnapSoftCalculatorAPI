@@ -14,7 +14,18 @@ namespace SnapSoftCalculatorAPI.Interfaces
     /// <returns></returns>
     List<int> CalculateMagicProductAnyWay(List<int> inputNumbers);
 
+    /// <summary>
+    /// Get all calculations stored
+    /// </summary>
+    /// <returns></returns>
     List<ICalculation> GetAll();
+
+    /// <summary>
+    /// Get all calculations which comment contains the given search parameter
+    /// </summary>
+    /// <param name="commentFilter"></param>
+    /// <returns></returns>
+    List<ICalculation> SearchByComment(string commentFilter);
 
     ICalculationResponse CalculateAnyWay(ICalculationRequest request);
 
